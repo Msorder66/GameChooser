@@ -8,5 +8,5 @@
 import Foundation
 
 struct Response: Codable, Hashable, Equatable {
-    let data: [Data]
+    let data: Data
 }
