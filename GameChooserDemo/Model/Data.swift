@@ -71,4 +71,24 @@ struct Tags: Codable, Hashable, Equatable, Comparable {
     let name: String
     let language: String
     let image_background: String
+    let esrb_rating: Esrb_rating
+}
+
+struct Esrb_rating: Codable, Hashable, Equatable, Comparable {
+    static func < (lhs: Esrb_rating, rhs: Esrb_rating) -> Bool {
+        lhs.name < rhs.name
+    }
+    
+    let name: String
+    let short_screenshots: Short_screenshots
+    
+}
+
+struct Short_screenshots: Codable, Hashable, Equatable, Comparable {
+    static func < (lhs: Short_screenshots, rhs: Short_screenshots) -> Bool {
+        lhs.image < rhs.image
+    }
+    
+    let image: String
+    
 }
