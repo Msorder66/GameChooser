@@ -15,22 +15,6 @@ struct Data: Codable, Hashable, Equatable, Comparable {
     var id: Int
     var slug: String
     var name: String
-    
-    
-    
-
-}
-
-struct platforms: Codable, Hashable, Equatable, Comparable {
-    static func < (lhs: platforms, rhs: platforms) -> Bool {
-        lhs.id < rhs.id
-    }
-    
-    var platform: [String]
-    var id: Int
-    var name: String
-    var image: Bool
-    var year_start: Int
-    var year_end: Int
-    var image_background: String
+    var released: String
+    var background_image: String
 }

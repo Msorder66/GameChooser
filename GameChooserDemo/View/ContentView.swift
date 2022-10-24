@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let gameUrl = "https://rawg-video-games-database.p.rapidapi.com/games?key=2ff2b6a5216e4ff58c  4100d4d1881dcb"
+let gameUrl = "https://rawg-video-games-database.p.rapidapi.com/games?key=d4a77005e9274c13b01da476c5b51757"
 
 struct ContentView: View {
     @StateObject var viewModel = APIViewModel()

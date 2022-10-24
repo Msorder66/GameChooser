@@ -9,6 +9,5 @@ import Foundation
 
 struct Response: Codable, Hashable, Equatable {
     let results: [Data]
-    let platforms: [platforms]
 }
 

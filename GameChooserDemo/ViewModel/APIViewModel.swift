@@ -18,7 +18,7 @@ class APIViewModel: ObservableObject {
             "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com"
         ]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://rawg-video-games-database.p.rapidapi.com/games?key=2ff2b6a5216e4ff58c4100d4d1881dcb")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://rawg-video-games-database.p.rapidapi.com/games?key=d4a77005e9274c13b01da476c5b51757")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "GET"
