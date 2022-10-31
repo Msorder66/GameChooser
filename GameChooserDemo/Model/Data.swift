@@ -9,10 +9,9 @@ import Foundation
 
 struct Data: Codable, Hashable, Equatable, Comparable {
     static func < (lhs: Data, rhs: Data) -> Bool {
-        lhs.id < rhs.id
+        lhs.name < rhs.name
     }
     
-    let id: Int
     let name: String
     let released: String
     let background_image: String
@@ -31,10 +30,9 @@ struct Platforms: Codable, Hashable, Equatable, Comparable {
 
 struct Platform: Codable, Hashable, Equatable, Comparable {
     static func < (lhs: Platform, rhs: Platform) -> Bool {
-        lhs.id < rhs.id
+        lhs.games_count < rhs.games_count
     }
     
-    let id: Int
     let name: String
     let image: String?
     let games_count: Int

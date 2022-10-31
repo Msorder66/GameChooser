@@ -8,7 +8,7 @@
 import Foundation
 
 class APIViewModel: ObservableObject {
-    @Published var gamedata : Response!
+    @Published var gamedata = [Data]()
     
     @MainActor
     func fetchData() async {
@@ -33,7 +33,10 @@ class APIViewModel: ObservableObject {
                         let httpResponse = response as? HTTPURLResponse
                         print(httpResponse!)
                         
-                        self.gamedata = try JSONDecoder().decode(Response.self, from: data!)
+                        if let data = data {
+                            let response = try JSONDecoder().decode(Response.self, from: data)
+                            self.gamedata = response.results
+                        }
                     }
                 }
             catch let error {
