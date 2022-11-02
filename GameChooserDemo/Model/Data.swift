@@ -17,6 +17,10 @@ struct Data: Codable, Hashable, Equatable, Comparable {
     let background_image: String
     let saturated_color: String
     let platforms: [Platforms]?
+    let genres: [Genre]?
+    let store: [Stores]?
+    
+    
 }
 
 struct Platforms: Codable, Hashable, Equatable, Comparable {
@@ -35,18 +39,16 @@ struct Platform: Codable, Hashable, Equatable, Comparable {
     let name: String
     let image: String?
     let games_count: Int
-    let image_background: String
-    let genres: Genres?
     
 }
 
-struct Genres: Codable, Hashable, Equatable, Comparable {
-    static func < (lhs: Genres, rhs: Genres) -> Bool {
+struct Genre: Codable, Hashable, Equatable, Comparable {
+    static func < (lhs: Genre, rhs: Genre) -> Bool {
         lhs.name < rhs.name
     }
     let name: String
     let image_background: String
-    let store: Stores
+    
 }
 
 struct Stores: Codable, Hashable, Equatable, Comparable {
@@ -57,7 +59,6 @@ struct Stores: Codable, Hashable, Equatable, Comparable {
     let name: String
     let domain: String
     let image_background: String
-    let tags: Tags
 }
 
 struct Tags: Codable, Hashable, Equatable, Comparable {
