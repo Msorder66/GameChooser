@@ -23,7 +23,6 @@ struct Platforms: Codable, Hashable, Equatable, Comparable {
     static func < (lhs: Platforms, rhs: Platforms) -> Bool {
         lhs.released_at! < rhs.released_at!
     }
-    
     let released_at: String?
     let platform: Platform
 }

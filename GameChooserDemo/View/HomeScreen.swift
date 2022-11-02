@@ -23,21 +23,32 @@ struct HomeScreen: View {
                             returnedImage
                                 .resizable()
                                 .frame(width: 100, height: 100)
+                                .cornerRadius(20 )
                         }, placeholder: {
-//                            ProgressView()
+                            ProgressView()
                         })
                         Text(gamedata.name)
                             .font(.title)
                     }
                     VStack {
                         Text(gamedata.released)
-//                        Text(gamedata.platforms)
+                        if let platforms = gamedata.platforms {
+                            ForEach(platforms, id: \.self) { platform in
+                                Text(platform.platform.name)
+//                                Text(platform.platform.games_count)
+//                                AsyncImage(url: URL(string: platform.platform.image_background), content: { returnedImage in
+//                                    returnedImage
+//
+//                                })
+                            }
+                        }
                     }
-                    
-//                    .background(Color(hex: gamedata.saturated_color))
                 }
                 
+                //                    .background(Color(hex: gamedata.saturated_color))
             }
+            
+        }
             
             
 
@@ -77,4 +88,3 @@ struct HomeScreen: View {
             HomeScreen()
         }
     }
-}
