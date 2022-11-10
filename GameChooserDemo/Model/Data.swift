@@ -15,11 +15,11 @@ struct Data: Codable, Hashable, Equatable, Comparable {
     let name: String
     let released: String
     let background_image: String
-    let saturated_color: String
+//    let saturated_color: String
     let platforms: [Platforms]?
     let genres: [Genre]?
-    let store: [Stores]?
-    
+    let stores: [StoreElement]?
+    let tags: [Tag]?
     
 }
 
@@ -33,12 +33,11 @@ struct Platforms: Codable, Hashable, Equatable, Comparable {
 
 struct Platform: Codable, Hashable, Equatable, Comparable {
     static func < (lhs: Platform, rhs: Platform) -> Bool {
-        lhs.games_count < rhs.games_count
+        lhs.name < rhs.name
     }
     
     let name: String
     let image: String?
-    let games_count: Int
     
 }
 
@@ -47,29 +46,32 @@ struct Genre: Codable, Hashable, Equatable, Comparable {
         lhs.name < rhs.name
     }
     let name: String
-    let image_background: String
     
 }
 
-struct Stores: Codable, Hashable, Equatable, Comparable {
-    static func < (lhs: Stores, rhs: Stores) -> Bool {
+// MARK: - StoreElement
+struct StoreElement: Codable, Hashable, Equatable, Comparable {
+    static func < (lhs: StoreElement, rhs: StoreElement) -> Bool {
+        lhs.hashValue < rhs.hashValue
+    }
+    let store: StoreData
+}
+
+// MARK: - StoreData
+struct StoreData: Codable, Hashable, Equatable, Comparable {
+    static func < (lhs: StoreData, rhs: StoreData) -> Bool {
         lhs.domain < rhs.domain
     }
-    
-    let name: String
     let domain: String
-    let image_background: String
 }
 
-struct Tags: Codable, Hashable, Equatable, Comparable {
-    static func < (lhs: Tags, rhs: Tags) -> Bool {
+struct Tag: Codable, Hashable, Equatable, Comparable {
+    static func < (lhs: Tag, rhs: Tag) -> Bool {
         lhs.language < rhs.language
     }
     
     let name: String
     let language: String
-    let image_background: String
-    let esrb_rating: Esrb_rating
 }
 
 struct Esrb_rating: Codable, Hashable, Equatable, Comparable {

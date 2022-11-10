@@ -17,48 +17,63 @@ struct HomeScreen: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.gamedata, id: \.self) { gamedata in
-                    HStack {
-                        AsyncImage(url: URL(string: gamedata.background_image), content: { returnedImage in
-                            returnedImage
-                                .resizable()
-                                .frame(width: 100, height: 100)
-                                .cornerRadius(20 )
-                        }, placeholder: {
-                            ProgressView()
-                        })
-                        Text(gamedata.name)
-                            .font(.title)
-                            .bold()
-                    }
-                    HStack {
-                        ForEach(gamedata.genres!, id: \.self) { genre in
-                            Text(genre.name)
-                        }
-                    }
-                    VStack {
-                        if let platforms = gamedata.platforms {
-                            ForEach(gamedata.store ?? [], id: \.self) { store in
-                                Text(store.name)
-                                Text(store.domain)
-                                Text(gamedata.released)
-                                    .padding()
-                                ForEach(platforms, id: \.self) { platform in
-                                    Text(platform.platform.name)
-                                    Text("\(platform.platform.games_count)")
-                                    // Image(platform.platform.image?)
-                                }
-                            }
-                        }
-                    }
+                ForEach(viewModel.gamedata, id: \.self) { itemdata in
+                    
+//                            AsyncImage(url: URL(string: itemdata.background_image), content: { returnedImage in
+//                                returnedImage
+//                                    .resizable()
+//                                    .frame(width: 100, height: 100)
+//                                    .cornerRadius(20 )
+//                            }, placeholder: {
+//                                ProgressView()
+//                            })
+//                            Text(itemdata.name)
+//                                .font(.title)
+//                                .bold()
+//                        }
+                        
+//                        HStack {
+//                            ForEach(itemdata.genres!, id: \.self) { genre in
+//                                Text(genre.name)
+//                            }
+//                        }
+                        
+//                        VStack {
+//                            if let tags = itemdata.tags {
+//                                ForEach(tags, id: \.self) { tag in
+//                                    Text("Tag: \(tag.name)")
+//                                }
+//                            }
+//                        }
+//                    }
+                    
+//                    VStack {
+//                        Text(itemdata.released)
+//                            .padding()
+//                        if let platforms = itemdata.platforms {
+//                            ForEach(platforms, id: \.self) { platform in
+//                                Text(platform.platform.name)
+//                                Text("\(platform.platform.games_count)")
+//
+//                            }
+//                        }
+//                    }
+//                    VStack {
+//                        if let Store = itemdata.stores {
+//                            ForEach(Store, id: \.self) { store in
+//                                Text(store.store.domain)
+//                                    .frame(alignment: .center)
+//                            }
+//                        } else {
+//                            Text("Store didin't work")
+//                        }
+//                    }
                 }
             }
             .task {
                 await viewModel.fetchData()
             }
         }
-        
-        //                    .background(Color(hex: gamedata.saturated_color))
     }
     
 }
