@@ -37,6 +37,7 @@ struct Platform: Codable, Hashable, Equatable, Comparable {
     }
     
     let name: String
+    let games_count : Int
     let image: String?
     
 }
@@ -67,11 +68,11 @@ struct StoreData: Codable, Hashable, Equatable, Comparable {
 
 struct Tag: Codable, Hashable, Equatable, Comparable {
     static func < (lhs: Tag, rhs: Tag) -> Bool {
-        lhs.language < rhs.language
+        lhs.name < rhs.name
     }
     
     let name: String
-    let language: String
+//    let language: String
 }
 
 struct Esrb_rating: Codable, Hashable, Equatable, Comparable {
