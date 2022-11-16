@@ -23,9 +23,15 @@ struct GameDetailView: View {
             }, placeholder: {
                 ProgressView()
             })
+            .overlay(Rectangle()
+                .ignoresSafeArea()
+                .foregroundColor(.clear)
+            )
+            
             VStack {
                 Text(gameData.name)
-                    .font(.largeTitle)
+                    .font(.title2)
+                    .fontWeight(.bold)
                 Spacer()
                 
                 ScrollView(.horizontal){
@@ -65,7 +71,7 @@ struct GameDetailView: View {
                 Spacer()
             }
         }
-        .foregroundColor(.white)
+        .foregroundColor(.red)
     }
 }
 

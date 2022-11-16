@@ -12,35 +12,30 @@ let gameUrl = [ "https://rawg-video-games-database.p.rapidapi.com/games?key=d4a7
 
 struct HomeScreen: View {
     @StateObject var viewModel = APIViewModel()
-    //    let url = URL(string: "https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg")
-    
+    @State var Tab = AppTabView()
     var body: some View {
         NavigationView {
             ZStack{
-//                    Color(hex: ",")
-    
-                    VStack{
-//                 Text("Games")
-//                        .font(.largeTitle)
-                        List {
-                            ForEach(viewModel.gamedata,id:  \.self) { game in
-                                NavigationLink {
-                                    GameDetailView(gameData: game)
-                                } label: {
-                                    ComponetView(gameData: game)
-                                    
-                                }
+                VStack{
+                    //                 Text("Games")
+                    //                        .font(.largeTitle)
+                    List {
+                        ForEach(viewModel.gamedata,id:  \.self) { game in
+                            NavigationLink {
+                                GameDetailView(gameData: game)
+                            } label: {
+                                ComponetView(gameData: game)
                             }
                         }
                     }
-                
+                }
             }
         }
-            .task {
-                await viewModel.fetchData()
-            }
+        .task {
+            await viewModel.fetchData()
         }
     }
+}
 
 
 
