@@ -26,9 +26,8 @@ struct GameTabView: View {
     var body: some View {
         NavigationView{
             ZStack {
-                Text("Game View")
+                HomeScreen()
             }
-            .navigationTitle("GView")
         }
     }
 }
@@ -37,9 +36,8 @@ struct ChooserTabView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Text("Game Chooser")
+                GameChooserview()
             }
-            .navigationTitle("GChooser")
         }
     }
 }

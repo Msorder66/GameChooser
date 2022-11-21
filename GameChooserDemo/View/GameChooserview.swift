@@ -9,7 +9,30 @@ import SwiftUI
 
 struct GameChooserview: View {
     var body: some View {
-        Text("Hello, World!")
+        ZStack{
+            VStack{
+                List {
+                    ForEach(viewModel.gamedata,id:  \.self) { game in
+                        NavigationLink {
+                            GameDetailView(gameData: game)
+                        } label: {
+                            ComponetView(gameData: game)
+                        }
+                    }
+                    var addButton: some View {
+                        Button("Start", action: {
+                            add()
+                        })
+                    }
+                }
+            }
+        }
+        func add() {
+            
+        }
+        
+        func GameChooser() {
+        }
     }
 }
 
