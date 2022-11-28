@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct AppTabView: View {
+    @EnvironmentObject var viewModel: APIViewModel
+    
     var body: some View {
         TabView{
             GameTabView()
                 .tabItem {
                     (Label("Games", systemImage: "house"))
                 }
+                .environmentObject(viewModel)
+            
             ChooserTabView()
                 .tabItem {
                     Label("Chooser", systemImage: "gearshape")
                 }
+                .environmentObject(viewModel)
         }
     }
 }

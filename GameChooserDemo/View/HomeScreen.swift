@@ -11,8 +11,9 @@ let gameUrl = [ "https://rawg-video-games-database.p.rapidapi.com/games?key=d4a7
 ]
 
 struct HomeScreen: View {
-    @StateObject var viewModel = APIViewModel()
+    @EnvironmentObject var viewModel: APIViewModel
     @State var Tab = AppTabView()
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -28,6 +29,7 @@ struct HomeScreen: View {
                             }
                         }
                     }
+                    .listStyle(.inset)
                 }
             }
         }

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct GameChooserApp: App {
+    @StateObject var viewModel = APIViewModel()
     var body: some Scene {
         WindowGroup {
             AppTabView()
+                .environmentObject(viewModel)
         }
     }
 }
