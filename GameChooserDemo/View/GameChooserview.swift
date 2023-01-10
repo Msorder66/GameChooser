@@ -11,7 +11,7 @@ struct GameChooserview: View {
     @EnvironmentObject var viewModel: APIViewModel
     @State var selection = Set<Data>()
     @State var editMode: EditMode = .inactive
-    //    @State var isEditing = false
+    @State var isEditing = false
     
     var body: some View {
         ZStack{
@@ -24,48 +24,39 @@ struct GameChooserview: View {
                             ComponetView(gameData: game)
                         }
                     }
-//                    .navigationTitle(Text("Demo"))
-//                    .environment(\.editMode, self.$editMode)
-//                    .toolbar {
-//                        ToolbarItem(placement: .navigationBarLeading) {
-//                            selectButton
-//                        }
-//                        ToolbarItem(placement: .navigationBarTrailing) {
-//                            startButton
-                        }
+                    .navigationTitle(Text("Demo"))
+                    .environment(\.editMode, self.$editMode)
+                    .toolbar {
+                        // ToolbarItem(placemen.navigationBarLeading){
+                        //             selectButton
+                        //}
+                        // ToolbarItem(placemen.navigationBarTrailing){
+                        //             startButton
+                        //}
                     }
                 }
             }
+            .navigationBarItems(trailing: Button(action: {
+                isEditing.toggle()
+            }, label: {
+                if self.isEditing {
+                    Text("Start")
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.red)
+                }else {
+                    Text("Select")
+                        .foregroundColor(Color.blue)
+                    func decider() {
+                        var Decider = viewModel.gamedata
+                }
+            }))
+            .listStyle(.inset)
+            .environment(\.editMode, .constant(self.isEditing ? .active : .inactive))
+            .animation(.spring(), value: isEditing)
+            
         }
-//        var selectButton: some View {
-//           Button(action: {
-//               self.editMode.toggle()
-//               self.selection = Set<Data>()
-//           }) {
-//               Text(self.editMode.title)
-//           }
-//       }
-//
-//       var startButton: some View {
-//           if editMode == .inactive {
-//               return Button(action: addItem) {
-//                   Image(systemName: "Select")
-//               }
-//           } else {
-//               return Button(action: chosser) {
-//                   Image(systemName: "Start")
-//               }
-//           }
-//       }
-//
-//       func chosser() {
-//           for id in selection {
-//
-//               }
-//           }
-//           selection = Set<Data>()
-//       }
-    
+    }
+}
 
 
 struct GameChooserview_Previews: PreviewProvider {
@@ -75,19 +66,30 @@ struct GameChooserview_Previews: PreviewProvider {
 }
 
 
-//    .navigationBarItems(trailing: Button(action: {
-//        isEditing.toggle()
-//    }, label: {
-//        if self.isEditing {
-//            Text("Start")
-//                .fontWeight(.bold)
-//                .foregroundColor(Color.red)
-//        }else {
-//            Text("Select")
-//                .foregroundColor(Color.blue)
+//                var selectButton: some View {
+//                    Button(action: {
+//                        self.editMode.toggle()
+//                        self.selection = Set<Data>()
+//                    }) {
+//                        Text(self.editMode.title)
+//                    }
+//                }
 //
-//        }
-//    }))
-//    .listStyle(.inset)
-//    .environment(\.editMode, .constant(self.isEditing ? .active : .inactive))
-//    .animation(.spring(), value: isEditing)
+//                var startButton: some View {
+//                    if editMode == .inactive {
+//                        return Button(action: addItem) {
+//                            Image(systemName: "Select")
+//                        }
+//                    } else {
+//                        return Button(action: chosser) {
+//                            Image(systemName: "Start")
+//                        }
+//                    }
+//                }
+//
+//                func chosser() {
+//                    for id in selection {
+//
+//                    }
+//                }
+//                selection = Set<Data>()
